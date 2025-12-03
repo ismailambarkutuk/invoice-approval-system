@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  activemq:
+    image: apache/activemq-artemis:latest
+    container_name: invoice-approval-activemq
+    ports:
+      - "61616:61616"  # JMS port
+      - "8161:8161"    # Web console
+    environment:
+      - AMQ_USER=admin
+      - AMQ_PASSWORD=admin
+      - AMQ_EXTRA_ARGS=--http-host 0.0.0.0
+    networks:
+      - invoice-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8161"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  invoice-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: invoice-approval-app
+    ports:
+      - "8080:8080"    # Application port
+      - "4848:4848"    # Payara admin port
+    depends_on:
+      activemq:
+        condition: service_healthy
+    environment:
+      - ACTIVE_MQ_BROKER_URL=tcp://activemq:61616
+    networks:
+      - invoice-network
+    volumes:
+      - ./logs:/opt/payara/glassfish/domains/domain1/logs
+
+networks:
+  invoice-network:
+    driver: bridge

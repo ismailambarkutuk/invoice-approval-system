@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Approval System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .info-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .endpoint {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .endpoint code {
+            color: #d63384;
+            font-size: 14px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        .tech-badge {
+            display: inline-block;
+            background-color: #2196F3;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Invoice Approval System</h1>
+        
+        <div class="info-box">
+            <strong>System Status:</strong> Running<br>
+            <strong>SOAP Services:</strong> Available at /services/*<br>
+            <strong>ActiveMQ:</strong> Connected to tcp://localhost:61616
+        </div>
+        
+        <h2>System Architecture</h2>
+        <p>This system implements a three-layer architecture:</p>
+        <ul>
+            <li><strong>API Layer:</strong> SOAP Web Services (JAX-WS)</li>
+            <li><strong>Messaging Layer:</strong> ActiveMQ for asynchronous processing</li>
+            <li><strong>Data Layer:</strong> Hibernate/JPA for persistent data management</li>
+        </ul>
+        
+        <h2>Available SOAP Endpoints</h2>
+        
+        <div class="endpoint">
+            <strong>WSDL URL:</strong><br>
+            <code>http://localhost:8080/invoice-approval-system/services/InvoiceWebService?wsdl</code>
+        </div>
+        
+        <h3>Operations:</h3>
+        <ul>
+            <li><strong>createInvoice</strong> - Create a new invoice and send it for approval</li>
+            <li><strong>approveInvoice</strong> - Approve an invoice</li>
+            <li><strong>rejectInvoice</strong> - Reject an invoice</li>
+        </ul>
+        
+        <h2>Technologies Used</h2>
+        <div>
+            <span class="tech-badge">Jakarta EE 10</span>
+            <span class="tech-badge">SOAP (JAX-WS)</span>
+            <span class="tech-badge">ActiveMQ</span>
+            <span class="tech-badge">Hibernate</span>
+            <span class="tech-badge">JPA</span>
+            <span class="tech-badge">H2 Database</span>
+            <span class="tech-badge">Maven</span>
+        </div>
+        
+        <h2>Testing</h2>
+        <p>You can test the SOAP services using:</p>
+        <ul>
+            <li>Postman (SOAP requests)</li>
+            <li>SoapUI</li>
+            <li>cURL</li>
+            <li>Any SOAP client</li>
+        </ul>
+        
+        <h2>Example SOAP Request (createInvoice)</h2>
+        <div class="endpoint">
+            <pre style="background-color: #f4f4f4; padding: 10px; overflow-x: auto;"><code>&lt;soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"&gt;
+  &lt;soap:Body&gt;
+    &lt;createInvoice xmlns="http://api.approval.invoice.com/"&gt;
+      &lt;createInvoiceRequest&gt;
+        &lt;invoiceNumber&gt;INV-2024-001&lt;/invoiceNumber&gt;
+        &lt;vendorName&gt;Acme Corporation&lt;/vendorName&gt;
+        &lt;amount&gt;1500.00&lt;/amount&gt;
+        &lt;createdBy&gt;John Doe&lt;/createdBy&gt;
+        &lt;description&gt;Monthly service invoice&lt;/description&gt;
+      &lt;/createInvoiceRequest&gt;
+    &lt;/createInvoice&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code></pre>
+        </div>
+    </div>
+</body>
+</html>
+

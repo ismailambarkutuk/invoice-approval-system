@@ -1,0 +1,14 @@
+target/
+.git
+.gitignore
+*.iml
+.idea
+.vscode
+*.log
+*.db
+*.h2.db
+.DS_Store
+Thumbs.db
+node_modules
+*.swp
+*.swo
