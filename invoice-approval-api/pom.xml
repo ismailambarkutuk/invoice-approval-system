@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.invoice.approval</groupId>
+        <artifactId>invoice-approval-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>invoice-approval-api</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Invoice Approval System - API Layer</name>
+    <description>API layer with SOAP services (JAX-WS) for external communication</description>
+
+    <dependencies>
+        <!-- JAX-WS API -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+        </dependency>
+
+        <!-- JAX-WS Runtime -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+        </dependency>
+
+        <!-- Jakarta EE API -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+        </dependency>
+
+        <!-- Messaging Layer -->
+        <dependency>
+            <groupId>com.invoice.approval</groupId>
+            <artifactId>invoice-approval-messaging</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Data Layer -->
+        <dependency>
+            <groupId>com.invoice.approval</groupId>
+            <artifactId>invoice-approval-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+
